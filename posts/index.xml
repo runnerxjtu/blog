@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>所有文章 - </title>
-    <link>https://github.com/runnerxjtu/blog.git/posts/</link>
+    <link>https://runnerxjtu.github.com/blog/posts/</link>
     <description>所有文章 | </description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Oct 2022 16:45:27 &#43;0800</lastBuildDate><atom:link href="https://github.com/runnerxjtu/blog.git/posts/" rel="self" type="application/rss+xml" /><item>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Oct 2022 16:45:27 &#43;0800</lastBuildDate><atom:link href="https://runnerxjtu.github.com/blog/posts/" rel="self" type="application/rss+xml" /><item>
   <title>题目</title>
-  <link>https://github.com/runnerxjtu/blog.git/posts/text/</link>
+  <link>https://runnerxjtu.github.com/blog/posts/text/</link>
   <pubDate>Thu, 27 Oct 2022 16:45:27 &#43;0800</pubDate>
   <author>霁飏</author>
-  <guid>https://github.com/runnerxjtu/blog.git/posts/text/</guid>
+  <guid>https://runnerxjtu.github.com/blog/posts/text/</guid>
   <description><![CDATA[111111111111]]></description>
 </item>
 </channel>
