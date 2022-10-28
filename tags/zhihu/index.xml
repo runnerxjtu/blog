@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>知乎 - 标签 - </title>
+    <link>http://runnerxjtu.github.com/blog/tags/zhihu/</link>
+    <description>知乎 - 标签 - </description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 13 Oct 2022 20:36:11 &#43;0800</lastBuildDate><atom:link href="http://runnerxjtu.github.com/blog/tags/zhihu/" rel="self" type="application/rss+xml" /><item>
+  <title>【面试】Go常见面试题【由浅入深】2022版</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/%E9%9D%A2%E8%AF%95/go%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+  <pubDate>Thu, 13 Oct 2022 20:36:11 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/%E9%9D%A2%E8%AF%95/go%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+  <description><![CDATA[注意 本文内容来源于：【知乎】Go常见面试题【由浅入深】2022版 🍇 = 和 := 的区别 --查看答案-- =是赋值变量，:=是定义变量 🍈 指针的作用 展开查看详情 获取变量的值 import fmt func main(){ a := 1 p := &amp;a // 获取地址 fmt.Prinf(*p) // 获取值 } 改变变量的值 // 交换函数 func swap(a,b *int){ *a,*b = *b,*a; } 用指针替代传入函数 type A struct{} func (a *A) fun(){} 🍉 Go有异常类型吗 展开查看详情 有。 Go用error类型代替try&hellip;catch
+_,err := funcDemo() if err != nil { fmt.Println(err) return } 也可以用errors.New()来定义自己的异常。
+type errorString struct { s string } func (e *errorString) Error() string { return e.]]></description>
+</item>
+</channel>
+</rss>

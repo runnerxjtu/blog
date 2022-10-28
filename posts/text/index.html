@@ -154,9 +154,42 @@
     <div id="search-dropdown-mobile"></div>
   </div><main class="container" data-page-style="normal"><aside class="toc" id="toc-auto"></aside>
 
-  <aside class="aside-custom">
+  <aside class="aside-custom" id="aside-sakana">
     
-</aside>
+
+<div class="sakana-widget">
+  <div class="sakana-item" id="takina-widget"></div>
+  <div class="sakana-item" id="chisato-widget"></div>
+</div>
+<script>
+  function initSakanaWidget() {
+    const takina = SakanaWidget.getCharacter('takina')
+    SakanaWidget.registerCharacter('takina-slow', takina);
+    new SakanaWidget({
+      character: 'takina-slow',
+      controls: false,
+      autoFit: true,
+      stroke: {
+        color: "#b4b4b4",
+        width: 2
+      }
+    }).mount('#takina-widget');
+
+    const chisato = SakanaWidget.getCharacter('chisato')
+    SakanaWidget.registerCharacter('chisato-slow', chisato);
+    new SakanaWidget({
+      character: 'chisato-slow',
+      controls: false,
+      autoFit: true,
+      stroke: {
+        color: "#b4b4b4",
+        width: 2
+      }
+    }).mount('#chisato-widget');
+  }
+</script>
+<script async onload="initSakanaWidget()" src="https://cdn.jsdelivr.net/npm/sakana-widget@2.3.0/lib/sakana.min.js">
+</script></aside>
 
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX">
@@ -164,8 +197,11 @@
       </h1><p class="single-subtitle animate__animated animate__fadeIn">概括</p></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       霁飏</span></span>
-          <span class="post-category">收录于 <a href="/blog/categories/%E5%88%86%E7%B1%BB1/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 分类1</a></span></div>
-      <div class="post-meta-line"><span title=2022-10-27&#32;16:45:27><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-27">2022-10-27</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 约 41 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 预计阅读 1 分钟</span>&nbsp;</div>
+          <span class="post-category">收录于 <a href="/blog/categories/%E5%88%86%E7%B1%BB1/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;分类1</a></span></div>
+      <div class="post-meta-line"><span title=2022-10-27&#32;16:45:27>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-10-27" >2022-10-27</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 41 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
     </div><div
       class="content"
       id="content"
@@ -204,7 +240,8 @@
 <h1 id="1-24">1</h1>
 <h1 id="1-25">1</h1>
 <p>1                1         1</p>
-<p>555555555555555555555555555</p></div><div class="post-footer" id="post-footer">
+<p>555555555555555555555555555</p></div>
+<div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -229,7 +266,7 @@
       <a href="/blog/posts/text2/" class="next" rel="next" title="我的第2篇文章">我的第2篇文章<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.104.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.16"><img class="fixit-icon" src="/blog/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.104.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/blog/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">
               <a href="/blog/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
@@ -237,7 +274,7 @@
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
   </noscript>
-</div><link rel="stylesheet" href="/blog/lib/cookieconsent/cookieconsent.min.css"><script src="/blog/lib/autocomplete/autocomplete.min.js" defer></script><script src="/blog/lib/lunr/lunr.min.js" defer></script><script src="/blog/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/blog/lib/lunr/lunr.zh.min.js" defer></script><script src="/blog/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/blog/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/blog/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script src="/blog/js/theme.min.js" defer></script><script type="text/javascript" src="/js/ribbons.js"></script>
+</div><link rel="stylesheet" href="/blog/lib/cookieconsent/cookieconsent.min.css"><script src="/blog/lib/autocomplete/autocomplete.min.js" defer></script><script src="/blog/lib/lunr/lunr.min.js" defer></script><script src="/blog/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/blog/lib/lunr/lunr.zh.min.js" defer></script><script src="/blog/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/blog/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/blog/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script src="/blog/js/theme.min.js" defer></script><script src="/blog/js/custom.min.js" defer></script><script type="text/javascript" src="/js/ribbons.js"></script>
 
 <script type="text/javascript" color="122,103,238" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script></body>
 </html>

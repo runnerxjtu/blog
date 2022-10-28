@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>【Go语言圣经】接口 - </title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 接口约定 接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
+🌹 接口类型 接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。
+io.Writer类型是用得最广泛的接口之一，因为它提供了所有类型的写入bytes的抽象，包括文件类型，内存缓冲区，网络链接，HTTP客户端，压缩工具，哈希等等。
+🌺 sort.Interface接口 package main import ( &#34;fmt&#34; &#34;os&#34; &#34;sort&#34; &#34;text/tabwriter&#34; &#34;time&#34; ) type Track struct { Title string Artist string Album string Year int Length time.Duration } var tracks = []*Track{ {&#34;Go&#34;, &#34;Delilah&#34;, &#34;From the Roots Up&#34;, 2012, length(&#34;3m38s&#34;)}, {&#34;Go&#34;, &#34;Moby&#34;, &#34;Moby&#34;, 1992, length(&#34;3m37s&#34;)}, {&#34;Go Ahead&#34;, &#34;Alicia Keys&#34;, &#34;As I Am&#34;, 2007, length(&#34;4m36s&#34;)}, {&#34;Ready 2 Go&#34;, &#34;Martin Solveig&#34;, &#34;Smash&#34;, 2011, length(&#34;4m24s&#34;)}, } func length(s string) time." /><meta name="keywords" content='Go语言圣经' /><meta itemprop="name" content="【Go语言圣经】接口">
+<meta itemprop="description" content="引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 接口约定 接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
+🌹 接口类型 接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。
+io.Writer类型是用得最广泛的接口之一，因为它提供了所有类型的写入bytes的抽象，包括文件类型，内存缓冲区，网络链接，HTTP客户端，压缩工具，哈希等等。
+🌺 sort.Interface接口 package main import ( &#34;fmt&#34; &#34;os&#34; &#34;sort&#34; &#34;text/tabwriter&#34; &#34;time&#34; ) type Track struct { Title string Artist string Album string Year int Length time.Duration } var tracks = []*Track{ {&#34;Go&#34;, &#34;Delilah&#34;, &#34;From the Roots Up&#34;, 2012, length(&#34;3m38s&#34;)}, {&#34;Go&#34;, &#34;Moby&#34;, &#34;Moby&#34;, 1992, length(&#34;3m37s&#34;)}, {&#34;Go Ahead&#34;, &#34;Alicia Keys&#34;, &#34;As I Am&#34;, 2007, length(&#34;4m36s&#34;)}, {&#34;Ready 2 Go&#34;, &#34;Martin Solveig&#34;, &#34;Smash&#34;, 2011, length(&#34;4m24s&#34;)}, } func length(s string) time."><meta itemprop="datePublished" content="2022-10-19T16:33:58+08:00" />
+<meta itemprop="dateModified" content="2022-10-19T16:33:58+08:00" />
+<meta itemprop="wordCount" content="193">
+<meta itemprop="keywords" content="Go语言圣经," /><meta property="og:title" content="【Go语言圣经】接口" />
+<meta property="og:description" content="引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 接口约定 接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
+🌹 接口类型 接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。
+io.Writer类型是用得最广泛的接口之一，因为它提供了所有类型的写入bytes的抽象，包括文件类型，内存缓冲区，网络链接，HTTP客户端，压缩工具，哈希等等。
+🌺 sort.Interface接口 package main import ( &#34;fmt&#34; &#34;os&#34; &#34;sort&#34; &#34;text/tabwriter&#34; &#34;time&#34; ) type Track struct { Title string Artist string Album string Year int Length time.Duration } var tracks = []*Track{ {&#34;Go&#34;, &#34;Delilah&#34;, &#34;From the Roots Up&#34;, 2012, length(&#34;3m38s&#34;)}, {&#34;Go&#34;, &#34;Moby&#34;, &#34;Moby&#34;, 1992, length(&#34;3m37s&#34;)}, {&#34;Go Ahead&#34;, &#34;Alicia Keys&#34;, &#34;As I Am&#34;, 2007, length(&#34;4m36s&#34;)}, {&#34;Ready 2 Go&#34;, &#34;Martin Solveig&#34;, &#34;Smash&#34;, 2011, length(&#34;4m24s&#34;)}, } func length(s string) time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%8E%A5%E5%8F%A3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-19T16:33:58+08:00" />
+<meta property="article:modified_time" content="2022-10-19T16:33:58+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="【Go语言圣经】接口"/>
+<meta name="twitter:description" content="引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 接口约定 接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
+🌹 接口类型 接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。
+io.Writer类型是用得最广泛的接口之一，因为它提供了所有类型的写入bytes的抽象，包括文件类型，内存缓冲区，网络链接，HTTP客户端，压缩工具，哈希等等。
+🌺 sort.Interface接口 package main import ( &#34;fmt&#34; &#34;os&#34; &#34;sort&#34; &#34;text/tabwriter&#34; &#34;time&#34; ) type Track struct { Title string Artist string Album string Year int Length time.Duration } var tracks = []*Track{ {&#34;Go&#34;, &#34;Delilah&#34;, &#34;From the Roots Up&#34;, 2012, length(&#34;3m38s&#34;)}, {&#34;Go&#34;, &#34;Moby&#34;, &#34;Moby&#34;, 1992, length(&#34;3m37s&#34;)}, {&#34;Go Ahead&#34;, &#34;Alicia Keys&#34;, &#34;As I Am&#34;, 2007, length(&#34;4m36s&#34;)}, {&#34;Ready 2 Go&#34;, &#34;Martin Solveig&#34;, &#34;Smash&#34;, 2011, length(&#34;4m24s&#34;)}, } func length(s string) time."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%8E%A5%E5%8F%A3/" /><link rel="prev" href="http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%96%B9%E6%B3%95/" /><link rel="next" href="http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/goroutines%E5%92%8Cchannels/" /><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="stylesheet" href="/blog/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/blog/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "【Go语言圣经】接口",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/runnerxjtu.github.com\/blog\/posts\/go%E8%AF%AD%E8%A8%80\/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F\/%E6%8E%A5%E5%8F%A3\/"
+    },"genre": "posts","keywords": "Go语言圣经","wordcount":  193 ,
+    "url": "http:\/\/runnerxjtu.github.com\/blog\/posts\/go%E8%AF%AD%E8%A8%80\/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F\/%E6%8E%A5%E5%8F%A3\/","datePublished": "2022-10-19T16:33:58+08:00","dateModified": "2022-10-19T16:33:58+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "作者"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/blog/" title=""><span class="header-title-text">🐏杨小羊的魔法盒</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/blog/posts/"
+                
+                
+              >文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/blog/categories/"
+                
+                
+              >分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/blog/tags/"
+                
+                
+              >标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/blog/about/"
+                
+                
+              >关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/blog/" title=""><span class="header-title-text">🐏杨小羊的魔法盒</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容 ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/blog/posts/"
+                  
+                  
+                >文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/blog/categories/"
+                  
+                  
+                >分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/blog/tags/"
+                  
+                  
+                >标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/blog/about/"
+                  
+                  
+                >关于</a></li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">目录 <i class="toc-icon fa-solid fa-angle-down fa-fw"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom" id="aside-sakana">
+    
+
+<div class="sakana-widget">
+  <div class="sakana-item" id="takina-widget"></div>
+  <div class="sakana-item" id="chisato-widget"></div>
+</div>
+<script>
+  function initSakanaWidget() {
+    const takina = SakanaWidget.getCharacter('takina')
+    SakanaWidget.registerCharacter('takina-slow', takina);
+    new SakanaWidget({
+      character: 'takina-slow',
+      controls: false,
+      autoFit: true,
+      stroke: {
+        color: "#b4b4b4",
+        width: 2
+      }
+    }).mount('#takina-widget');
+
+    const chisato = SakanaWidget.getCharacter('chisato')
+    SakanaWidget.registerCharacter('chisato-slow', chisato);
+    new SakanaWidget({
+      character: 'chisato-slow',
+      controls: false,
+      autoFit: true,
+      stroke: {
+        color: "#b4b4b4",
+        width: 2
+      }
+    }).mount('#chisato-widget');
+  }
+</script>
+<script async onload="initSakanaWidget()" src="https://cdn.jsdelivr.net/npm/sakana-widget@2.3.0/lib/sakana.min.js">
+</script></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>【Go语言圣经】接口</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/blog/svg/loading.min.svg"
+    data-src="images/fav.jpg"
+    data-srcset="images/fav.jpg, images/fav.jpg 1.5x, images/fav.jpg 2x"
+    data-sizes="auto"
+    alt="Anonymous"
+    title="Anonymous"/>&nbsp;Anonymous</span></span>
+          <span class="post-category">收录于 <a href="/blog/categories/programming/"><i class="fa-regular fa-folder fa-fw"></i>&nbsp;编程</a></span></div>
+      <div class="post-meta-line"><span title=2022-10-19&#32;16:33:58>
+            <i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-10-19" >2022-10-19</time>
+          </span>&nbsp;<i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;约 193 字&nbsp;
+        <i class="fa-regular fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div
+      class="content"
+      id="content"
+      
+      
+    ><div class="details admonition quote open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-quote-right fa-fw" aria-hidden="true"></i>引用<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content">本文内容来自：<a href="https://golang-china.github.io/gopl-zh/"target="_blank" rel="external nofollow noopener noreferrer">Go语言圣经（中文版）</a></div>
+    </div>
+  </div>
+<p><strong>环境配置：</strong></p>
+<ul>
+<li>系统：<em>Windows11</em></li>
+<li>编辑器：<em>vscode</em></li>
+</ul>
+<div class="details admonition note open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content">本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行<a href="https://golang.google.cn/dl/"target="_blank" rel="external nofollow noopener noreferrer">下载安装</a></div>
+    </div>
+  </div>
+<h4 id="-接口约定">💐 接口约定</h4>
+<p>接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。</p>
+<h4 id="-接口类型">🌹 接口类型</h4>
+<p>接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。</p>
+<p>io.Writer类型是用得最广泛的接口之一，因为它提供了所有类型的写入bytes的抽象，包括文件类型，内存缓冲区，网络链接，HTTP客户端，压缩工具，哈希等等。</p>
+<h4 id="-sortinterface接口">🌺 sort.Interface接口</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;sort&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;text/tabwriter&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Track</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Title</span>  <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Artist</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Album</span>  <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Year</span>   <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Length</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">tracks</span> <span class="p">=</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Track</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span><span class="s">&#34;Go&#34;</span><span class="p">,</span> <span class="s">&#34;Delilah&#34;</span><span class="p">,</span> <span class="s">&#34;From the Roots Up&#34;</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="s">&#34;3m38s&#34;</span><span class="p">)},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span><span class="s">&#34;Go&#34;</span><span class="p">,</span> <span class="s">&#34;Moby&#34;</span><span class="p">,</span> <span class="s">&#34;Moby&#34;</span><span class="p">,</span> <span class="mi">1992</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="s">&#34;3m37s&#34;</span><span class="p">)},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span><span class="s">&#34;Go Ahead&#34;</span><span class="p">,</span> <span class="s">&#34;Alicia Keys&#34;</span><span class="p">,</span> <span class="s">&#34;As I Am&#34;</span><span class="p">,</span> <span class="mi">2007</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="s">&#34;4m36s&#34;</span><span class="p">)},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span><span class="s">&#34;Ready 2 Go&#34;</span><span class="p">,</span> <span class="s">&#34;Martin Solveig&#34;</span><span class="p">,</span> <span class="s">&#34;Smash&#34;</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="s">&#34;4m24s&#34;</span><span class="p">)},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">length</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">d</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nf">ParseDuration</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">d</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">printTracks</span><span class="p">(</span><span class="nx">tracks</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Track</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">const</span> <span class="nx">format</span> <span class="p">=</span> <span class="s">&#34;%v\t%v\t%v\t%v\t%v\t\n&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tw</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="nx">tabwriter</span><span class="p">.</span><span class="nx">Writer</span><span class="p">).</span><span class="nf">Init</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="sc">&#39; &#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">tw</span><span class="p">,</span> <span class="nx">format</span><span class="p">,</span> <span class="s">&#34;Title&#34;</span><span class="p">,</span> <span class="s">&#34;Artist&#34;</span><span class="p">,</span> <span class="s">&#34;Album&#34;</span><span class="p">,</span> <span class="s">&#34;Year&#34;</span><span class="p">,</span> <span class="s">&#34;Length&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">tw</span><span class="p">,</span> <span class="nx">format</span><span class="p">,</span> <span class="s">&#34;-----&#34;</span><span class="p">,</span> <span class="s">&#34;------&#34;</span><span class="p">,</span> <span class="s">&#34;-----&#34;</span><span class="p">,</span> <span class="s">&#34;----&#34;</span><span class="p">,</span> <span class="s">&#34;------&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">t</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tracks</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintf</span><span class="p">(</span><span class="nx">tw</span><span class="p">,</span> <span class="nx">format</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Title</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Artist</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Album</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Length</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tw</span><span class="p">.</span><span class="nf">Flush</span><span class="p">()</span> <span class="c1">// calculate column widths and print table
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">byArtist</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Track</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">byArtist</span><span class="p">)</span> <span class="nf">Len</span><span class="p">()</span> <span class="kt">int</span>           <span class="p">{</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">byArtist</span><span class="p">)</span> <span class="nf">Less</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Artist</span> <span class="p">&lt;</span> <span class="nx">x</span><span class="p">[</span><span class="nx">j</span><span class="p">].</span><span class="nx">Artist</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">x</span> <span class="nx">byArtist</span><span class="p">)</span> <span class="nf">Swap</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="kt">int</span><span class="p">)</span>      <span class="p">{</span> <span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">x</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">x</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">x</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sort</span><span class="p">.</span><span class="nf">Sort</span><span class="p">(</span><span class="nf">byArtist</span><span class="p">(</span><span class="nx">tracks</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">printTracks</span><span class="p">(</span><span class="nx">tracks</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></div>
+<div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-10-19&#32;16:33:58>更新于 2022-10-19&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/blog/tags/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/">Go语言圣经</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/blog/">主页</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%96%B9%E6%B3%95/" class="prev" rel="prev" title="【Go 语言圣经】方法"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>【Go 语言圣经】方法</a>
+      <a href="/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/goroutines%E5%92%8Cchannels/" class="next" rel="next" title="【Go语言圣经】Goroutines和Channels">【Go语言圣经】Goroutines和Channels<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">由 <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.104.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/blog/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/blog/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">FixIt 主题在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="stylesheet" href="/blog/lib/katex/katex.min.css"><link rel="stylesheet" href="/blog/lib/cookieconsent/cookieconsent.min.css"><script src="/blog/lib/autocomplete/autocomplete.min.js" defer></script><script src="/blog/lib/lunr/lunr.min.js" defer></script><script src="/blog/lib/lunr/lunr.stemmer.support.min.js" defer></script><script src="/blog/lib/lunr/lunr.zh.min.js" defer></script><script src="/blog/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/blog/lib/katex/katex.min.js" defer></script><script src="/blog/lib/katex/auto-render.min.js" defer></script><script src="/blog/lib/katex/copy-tex.min.js" defer></script><script src="/blog/lib/katex/mhchem.min.js" defer></script><script src="/blog/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrLanguageCode":"zh","lunrSegmentitURL":"/blog/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30}};</script><script src="/blog/js/theme.min.js" defer></script><script src="/blog/js/custom.min.js" defer></script><script type="text/javascript" src="/js/ribbons.js"></script>
+
+<script type="text/javascript" color="122,103,238" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script></body>
+</html>

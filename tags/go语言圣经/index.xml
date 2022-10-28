@@ -1,0 +1,106 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Go语言圣经 - 标签 - </title>
+    <link>http://runnerxjtu.github.com/blog/tags/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/</link>
+    <description>Go语言圣经 - 标签 - </description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 19 Oct 2022 17:48:48 &#43;0800</lastBuildDate><atom:link href="http://runnerxjtu.github.com/blog/tags/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/" rel="self" type="application/rss+xml" /><item>
+  <title>【Go语言圣经】Goroutines和Channels</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/goroutines%E5%92%8Cchannels/</link>
+  <pubDate>Wed, 19 Oct 2022 17:48:48 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/goroutines%E5%92%8Cchannels/</guid>
+  <description><![CDATA[ 引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🌱 Goroutines 在Go语言中，每一个并发的执行单元叫作一个goroutine。
+package main import ( &#34;fmt&#34; &#34;time&#34; ) func main() { go spinner(100 * time.Millisecond) const n = 45 fibN := fib(n) // slow fmt.Printf(&#34;\rFibonacci(%d) = %d\n&#34;, n, fibN) } func spinner(delay time.Duration) { for { for _, r := range `-\|/` { fmt.Printf(&#34;\r%c&#34;, r) time.Sleep(delay) } } } func fib(x int) int { if x &lt; 2 { return x } return fib(x-1) + fib(x-2) } ]]></description>
+</item>
+<item>
+  <title>【Go语言圣经】接口</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%8E%A5%E5%8F%A3/</link>
+  <pubDate>Wed, 19 Oct 2022 16:33:58 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%8E%A5%E5%8F%A3/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 接口约定 接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
+🌹 接口类型 接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。
+io.Writer类型是用得最广泛的接口之一，因为它提供了所有类型的写入bytes的抽象，包括文件类型，内存缓冲区，网络链接，HTTP客户端，压缩工具，哈希等等。
+🌺 sort.Interface接口 package main import ( &#34;fmt&#34; &#34;os&#34; &#34;sort&#34; &#34;text/tabwriter&#34; &#34;time&#34; ) type Track struct { Title string Artist string Album string Year int Length time.Duration } var tracks = []*Track{ {&#34;Go&#34;, &#34;Delilah&#34;, &#34;From the Roots Up&#34;, 2012, length(&#34;3m38s&#34;)}, {&#34;Go&#34;, &#34;Moby&#34;, &#34;Moby&#34;, 1992, length(&#34;3m37s&#34;)}, {&#34;Go Ahead&#34;, &#34;Alicia Keys&#34;, &#34;As I Am&#34;, 2007, length(&#34;4m36s&#34;)}, {&#34;Ready 2 Go&#34;, &#34;Martin Solveig&#34;, &#34;Smash&#34;, 2011, length(&#34;4m24s&#34;)}, } func length(s string) time.]]></description>
+</item>
+<item>
+  <title>【Go 语言圣经】方法</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%96%B9%E6%B3%95/</link>
+  <pubDate>Wed, 19 Oct 2022 14:39:39 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%96%B9%E6%B3%95/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 方法声明 在函数声明时，在其名字之前放上一个变量，即是一个方法。
+第一个Distance的调用实际上用的是包级别的函数geometry.Distance，而第二个则是使用刚刚声明的Point，调用的是Point类下声明的Point.Distance方法。
+这种p.Distance的表达式叫做选择器，因为他会选择合适的对应p这个对象的Distance方法来执行。
+package geometry import &#34;math&#34; type Point struct{ X, Y float64 } // traditional function func Distance(p, q Point) float64 { return math.Hypot(q.X-p.X, q.Y-p.Y) } // same thing, but as a method of the Point type func (p Point) Distance(q Point) float64 { return math.Hypot(q.X-p.X, q.Y-p.Y) } p := Point{1, 2} q := Point{4, 6} fmt.Println(Distance(p, q)) // &#34;5&#34;, function call fmt.]]></description>
+</item>
+<item>
+  <title>【Go 语言圣经】函数</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%87%BD%E6%95%B0/</link>
+  <pubDate>Wed, 19 Oct 2022 11:44:24 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%87%BD%E6%95%B0/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🌶️ 函数声明 函数声明包括函数名、形式参数列表、返回值列表（可省略）以及函数体。
+func name(parameter-list) (result-list) { body } 形式参数列表描述了函数的参数名以及参数类型。这些参数作为局部变量，其值由参数调用者提供。
+🥕 递归 使用递归处理HTML文件
+新建项目文件夹chapter05并用vscode打开 在根目录chapter05下新建文件fetch 在fetch下新建文件main.go: package main import ( &#34;fmt&#34; &#34;io&#34; &#34;net/http&#34; &#34;os&#34; &#34;path&#34; ) //!+ // Fetch downloads the URL and returns the // name and length of the local file. func fetch(url string) (filename string, n int64, err error) { resp, err := http.Get(url) if err != nil { return &#34;&#34;, 0, err } defer resp.]]></description>
+</item>
+<item>
+  <title>【Go 语言圣经】复合数据类型</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%A4%8D%E5%90%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+  <pubDate>Tue, 18 Oct 2022 17:03:49 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%A4%8D%E5%90%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🌶️ slice Slice（切片）代表变长的序列，序列中每个元素都有相同的类型。一个slice类型一般写作[]T，其中T代表slice中元素的类型；slice的语法和数组很像，只是没有固定长度而已
+一个slice由三个部分构成：指针、长度和容量。
+🥦 map 哈希表是一种巧妙并且实用的数据结构。它是一个无序的key/value对的集合，其中所有的key都是不同的，然后通过给定的key可以在常数时间复杂度内检索、更新或删除对应的value。
+内置的make函数可以创建一个map：
+ages := make(map[string]int) // mapping from strings to ints 我们也可以用map字面值的语法创建map，同时还可以指定一些最初的key/value：
+ages := map[string]int{ &#34;alice&#34;: 31, &#34;charlie&#34;: 34, } Map的迭代顺序是不确定的，并且不同的哈希函数实现可能导致不同的遍历顺序。在实践中，遍历的顺序是随机的，每一次遍历的顺序都不相同。
+import &#34;sort&#34; var names []string for name := range ages { names = append(names, name) } sort.Strings(names) for _, name := range names { fmt.Printf(&#34;%s\t%d\n&#34;, name, ages[name]) } 和slice一样，map之间也不能进行相等比较；唯一的例外是和nil进行比较。要判断两个map是否包含相同的key和value，我们必须通过一个循环实现：
+func equal(x, y map[string]int) bool { if len(x) !]]></description>
+</item>
+<item>
+  <title>【Go 语言圣经】程序结构</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/</link>
+  <pubDate>Tue, 18 Oct 2022 14:46:18 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🍒 变量 变量是一种使用方便的占位符，用于引用计算机内存地址。
+指针
+变量有时候被称为可寻址的值。即使变量由表达式临时生成，那么表达式也必须能接受&amp;取地址操作。
+每次我们对一个变量取地址，或者复制指针，我们都是为原变量创建了新的别名。
+func incr(p *int) int { *p++ // 非常重要：只是增加p指向的变量的值，并不改变p指针！！！ return *p } v := 1 incr(&amp;v) // side effect: v is now 2 fmt.Println(incr(&amp;v)) // &#34;3&#34; (and v is 3) 指针特别有价值的地方在于我们可以不用名字而访问一个变量，但是这是一把双刃剑：要找到一个变量的所有访问者并不容易，我们必须知道变量全部的别名（译注：这是Go语言的垃圾回收器所做的工作）。
+new函数
+表达式new(T)将创建一个T类型的匿名变量，初始化为T类型的零值，然后返回变量地址，返回的指针类型为
+p := new(int) // p, *int 类型, 指向匿名的 int 变量 fmt.Println(*p) // &#34;0&#34; *p = 2 // 设置 int 匿名变量的值为 2 fmt.Println(*p) // &#34;2&#34; 变量的生命周期]]></description>
+</item>
+<item>
+  <title>【Go语言圣经】入门</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%85%A5%E9%97%A8/</link>
+  <pubDate>Tue, 18 Oct 2022 12:56:13 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%85%A5%E9%97%A8/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🍇 Hello, World 新建文件helloWorld.go
+package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, 世界&#34;) } 执行命令：
+go run helloWorld.go 控制台输出：
+Hello, 世界 使用build子命令：
+go build helloWrold.go 命令执行完毕在当前目录生成helloWorld.exe文件
+🍉 命令行参数 os包
+os 包以跨平台的方式，提供了一些与操作系统交互的函数和变量。程序的命令行参数可从 os 包的 Args 变量获取；os 包外部使用 os.Args 访问该变量。
+os.Args
+os.Args 变量是一个字符串（string）的 切片（slice）（译注：slice 和 Python 语言中的切片类似，是一个简版的动态数组）
+os.Args 的第一个元素：os.Args[0]，是命令本身的名字；其它的元素则是程序启动时传给它的参数。
+slice
+s[m:n] 形式的切片表达式，产生从第 m 个元素到第 n-1 个元素的切片。
+如果省略切片表达式的 m 或 n，会默认传入 0 或 len(s)，因此前面的切片可以简写成 os.Args[1:]。]]></description>
+</item>
+</channel>
+</rss>

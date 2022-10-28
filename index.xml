@@ -29,5 +29,89 @@
   <guid>http://runnerxjtu.github.com/blog/posts/text1/</guid>
   <description><![CDATA[111111111111]]></description>
 </item>
+<item>
+  <title>【大学语文】04729大学语文-复习资料</title>
+  <link>http://runnerxjtu.github.com/blog/posts/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/</link>
+  <pubDate>Sat, 22 Oct 2022 21:13:36 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/%E5%A4%A7%E5%AD%A6%E8%AF%AD%E6%96%87/</guid>
+  <description><![CDATA[寡人之于国也（孟子与梁惠王） 中心意旨 --查看答案-- 以民为本：民养生丧死无憾 线索 --查看答案-- 论述：民何以加多 两个比喻 展开查看详情 五十步笑百步 非我也，兵也。（把涂有饿殍归咎于年成不好） 论证方法： --查看答案-- 归纳法，演绎法，类比法 秋水-庄子 中心论点 --查看答案-- 宇宙无限，人的认知有限。 展开查看详情 启发人不能满足于有限的见闻 论证方法： --查看答案-- 比喻论证，类比法，对比法 展开查看详情 特色：由小到大，再由大到小，逐层推进 景物描写的作用： --查看答案-- 河水和海水的对照隐喻不同的认识境界，渲染了文章主旨 井蛙，夏虫，曲士是指分别受到： --查看答案-- 空间，时间，教育等条件的限制 文章特色 --查看答案-- 大量排比和反诘句-》涛涛莽莽的气势 五代使伶官传序-欧阳修 本文是一篇史论 中心论点 --查看答案-- &ldquo;盛衰之理，虽曰天命，岂非人事哉！&quot;-兴衰取决于人事 论证方法： --查看答案-- 对比法(庄宗兴败的事实) 历史事实论据和理论论据 --查看答案-- 庄宗兴败的史实和满招损,谦得益 文中名句 --查看答案-- 满招损,谦得益;忧劳可以兴国,逸豫可以亡身;祸患常积于忽微,智勇多困于所溺; 写作特色 --查看答案-- 通关兴败,得失,成败的强烈对比,突出悲剧的根本原因 论毅力 论点 --查看答案-- 有毅力者成,反是者败 核心观点 --查看答案-- 只有毅力至强方能取得事业的最终成功. 论证方法 --查看答案-- 正反对比(从事业的成与败,境况的顺与逆,毅力的强弱) 修辞手法 --查看答案-- 层递句式的比喻 就任北京大学校长之演说-蔡元培 三大教育思想 --查看答案-- A.抱定宗旨,B.砥砺前行,C.敬爱师友 论证方法: --查看答案-- 对比论证 理解&quot;大学者,研究高深学问者也&quot; --查看答案-- A.]]></description>
+</item>
+<item>
+  <title>【英语语法】00831现代英语语法-复习资料</title>
+  <link>http://runnerxjtu.github.com/blog/posts/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/</link>
+  <pubDate>Fri, 21 Oct 2022 21:02:27 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/</guid>
+  <description><![CDATA[引用 本文内容来源于: https://max.book118.com/html/2021/1111/7133063160004040.shtm Present the grammatical units that form a hierarchical order. 请给出语法单位等级结构图 A text consists of one or more sentences.
+sentences -&gt; clauses
+clause -&gt; phrases
+phrase -&gt; words
+word -&gt; morphemes
+morpheme
+Define morpheme, free morpheme, bound morpheme, morph and allomorph. 请给词素，自由词素，黏附词素，形素和词素变体下定义 1. What is a morph? (minimal,abstract,morph) 展开查看详情 A morpheme is the minmal distinctive grammatical unit, and is the lowest unit in grammatical hierarchy. Morphemes are actually abstract elements of analysis.]]></description>
+</item>
+<item>
+  <title>【Go语言圣经】Goroutines和Channels</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/goroutines%E5%92%8Cchannels/</link>
+  <pubDate>Wed, 19 Oct 2022 17:48:48 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/goroutines%E5%92%8Cchannels/</guid>
+  <description><![CDATA[ 引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🌱 Goroutines 在Go语言中，每一个并发的执行单元叫作一个goroutine。
+package main import ( &#34;fmt&#34; &#34;time&#34; ) func main() { go spinner(100 * time.Millisecond) const n = 45 fibN := fib(n) // slow fmt.Printf(&#34;\rFibonacci(%d) = %d\n&#34;, n, fibN) } func spinner(delay time.Duration) { for { for _, r := range `-\|/` { fmt.Printf(&#34;\r%c&#34;, r) time.Sleep(delay) } } } func fib(x int) int { if x &lt; 2 { return x } return fib(x-1) + fib(x-2) } ]]></description>
+</item>
+<item>
+  <title>【Go语言圣经】接口</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%8E%A5%E5%8F%A3/</link>
+  <pubDate>Wed, 19 Oct 2022 16:33:58 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%8E%A5%E5%8F%A3/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 接口约定 接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
+🌹 接口类型 接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。
+io.Writer类型是用得最广泛的接口之一，因为它提供了所有类型的写入bytes的抽象，包括文件类型，内存缓冲区，网络链接，HTTP客户端，压缩工具，哈希等等。
+🌺 sort.Interface接口 package main import ( &#34;fmt&#34; &#34;os&#34; &#34;sort&#34; &#34;text/tabwriter&#34; &#34;time&#34; ) type Track struct { Title string Artist string Album string Year int Length time.Duration } var tracks = []*Track{ {&#34;Go&#34;, &#34;Delilah&#34;, &#34;From the Roots Up&#34;, 2012, length(&#34;3m38s&#34;)}, {&#34;Go&#34;, &#34;Moby&#34;, &#34;Moby&#34;, 1992, length(&#34;3m37s&#34;)}, {&#34;Go Ahead&#34;, &#34;Alicia Keys&#34;, &#34;As I Am&#34;, 2007, length(&#34;4m36s&#34;)}, {&#34;Ready 2 Go&#34;, &#34;Martin Solveig&#34;, &#34;Smash&#34;, 2011, length(&#34;4m24s&#34;)}, } func length(s string) time.]]></description>
+</item>
+<item>
+  <title>【Go 语言圣经】方法</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%96%B9%E6%B3%95/</link>
+  <pubDate>Wed, 19 Oct 2022 14:39:39 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E6%96%B9%E6%B3%95/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 💐 方法声明 在函数声明时，在其名字之前放上一个变量，即是一个方法。
+第一个Distance的调用实际上用的是包级别的函数geometry.Distance，而第二个则是使用刚刚声明的Point，调用的是Point类下声明的Point.Distance方法。
+这种p.Distance的表达式叫做选择器，因为他会选择合适的对应p这个对象的Distance方法来执行。
+package geometry import &#34;math&#34; type Point struct{ X, Y float64 } // traditional function func Distance(p, q Point) float64 { return math.Hypot(q.X-p.X, q.Y-p.Y) } // same thing, but as a method of the Point type func (p Point) Distance(q Point) float64 { return math.Hypot(q.X-p.X, q.Y-p.Y) } p := Point{1, 2} q := Point{4, 6} fmt.Println(Distance(p, q)) // &#34;5&#34;, function call fmt.]]></description>
+</item>
+<item>
+  <title>【Go 语言圣经】函数</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%87%BD%E6%95%B0/</link>
+  <pubDate>Wed, 19 Oct 2022 11:44:24 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%87%BD%E6%95%B0/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🌶️ 函数声明 函数声明包括函数名、形式参数列表、返回值列表（可省略）以及函数体。
+func name(parameter-list) (result-list) { body } 形式参数列表描述了函数的参数名以及参数类型。这些参数作为局部变量，其值由参数调用者提供。
+🥕 递归 使用递归处理HTML文件
+新建项目文件夹chapter05并用vscode打开 在根目录chapter05下新建文件fetch 在fetch下新建文件main.go: package main import ( &#34;fmt&#34; &#34;io&#34; &#34;net/http&#34; &#34;os&#34; &#34;path&#34; ) //!+ // Fetch downloads the URL and returns the // name and length of the local file. func fetch(url string) (filename string, n int64, err error) { resp, err := http.Get(url) if err != nil { return &#34;&#34;, 0, err } defer resp.]]></description>
+</item>
+<item>
+  <title>【Go 语言圣经】复合数据类型</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%A4%8D%E5%90%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+  <pubDate>Tue, 18 Oct 2022 17:03:49 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/%E5%A4%8D%E5%90%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+  <description><![CDATA[引用 本文内容来自：Go语言圣经（中文版） 环境配置：
+系统：Windows11 编辑器：vscode 注意 本文假设你已经安装了Go并配置好相关环境，如果你还没有安装Go，请前往Go官方网站进行下载安装 🌶️ slice Slice（切片）代表变长的序列，序列中每个元素都有相同的类型。一个slice类型一般写作[]T，其中T代表slice中元素的类型；slice的语法和数组很像，只是没有固定长度而已
+一个slice由三个部分构成：指针、长度和容量。
+🥦 map 哈希表是一种巧妙并且实用的数据结构。它是一个无序的key/value对的集合，其中所有的key都是不同的，然后通过给定的key可以在常数时间复杂度内检索、更新或删除对应的value。
+内置的make函数可以创建一个map：
+ages := make(map[string]int) // mapping from strings to ints 我们也可以用map字面值的语法创建map，同时还可以指定一些最初的key/value：
+ages := map[string]int{ &#34;alice&#34;: 31, &#34;charlie&#34;: 34, } Map的迭代顺序是不确定的，并且不同的哈希函数实现可能导致不同的遍历顺序。在实践中，遍历的顺序是随机的，每一次遍历的顺序都不相同。
+import &#34;sort&#34; var names []string for name := range ages { names = append(names, name) } sort.Strings(names) for _, name := range names { fmt.Printf(&#34;%s\t%d\n&#34;, name, ages[name]) } 和slice一样，map之间也不能进行相等比较；唯一的例外是和nil进行比较。要判断两个map是否包含相同的key和value，我们必须通过一个循环实现：
+func equal(x, y map[string]int) bool { if len(x) !]]></description>
+</item>
 </channel>
 </rss>

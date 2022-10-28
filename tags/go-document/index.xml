@@ -1,0 +1,53 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Go官方文档 - 标签 - </title>
+    <link>http://runnerxjtu.github.com/blog/tags/go-document/</link>
+    <description>Go官方文档 - 标签 - </description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 18 Oct 2022 10:23:28 &#43;0800</lastBuildDate><atom:link href="http://runnerxjtu.github.com/blog/tags/go-document/" rel="self" type="application/rss+xml" /><item>
+  <title>【Go官方文档】Getting started with fuzzing</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/fuzz/</link>
+  <pubDate>Tue, 18 Oct 2022 10:23:28 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/fuzz/</guid>
+  <description><![CDATA[引用 本文内容来自：Tutorial: Getting started with fuzzing 环境配置：
+系统：Windows11 编辑器：vscode 🍄 1. 创建项目 新建fuzz文件夹并用vscode打开 在根目录fuzz下执行命令 go mod init example/fuzz 在根目录fuzz下新建文件main.go： package main import ( &#34;errors&#34; &#34;fmt&#34; &#34;unicode/utf8&#34; ) func main() { input := &#34;The quick brown fox jumped over the lazy dog&#34; rev, revErr := Reverse(input) doubleRev, doubleRevErr := Reverse(rev) fmt.Printf(&#34;original: %q\n&#34;, input) fmt.Printf(&#34;reversed: %q, err: %v\n&#34;, rev, revErr) fmt.Printf(&#34;reversed again: %q, err: %v\n&#34;, doubleRev, doubleRevErr) } func Reverse(s string) (string, error) { if !]]></description>
+</item>
+<item>
+  <title>【Go官方文档】Getting started with generics</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/generics/</link>
+  <pubDate>Tue, 18 Oct 2022 09:11:15 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/generics/</guid>
+  <description><![CDATA[引用 本文内容来自：Tutorial: Getting started with generics 环境配置：
+系统：Windows11 编辑器：vscode 🌶️ 创建项目 创建项目文件夹generics并用vscode打开 在终端执行命令： go mod init example/generics 创建文件main.go： package main import &#34;fmt&#34; // 定义约束 type Number interface { int64 | float64 } // SumIntsOrFloats sums the values of map m. It supports both int64 and float64 // as types for map values. func SumNumbers[K comparable, V Number](m map[K]V) V { var s V for _, v := range m { s += v } return s } func main() { // Initialize a map for the integer values ints := map[string]int64{ &#34;first&#34;: 34, &#34;second&#34;: 12, } // Initialize a map for the float values floats := map[string]float64{ &#34;first&#34;: 35.]]></description>
+</item>
+<item>
+  <title>【Go官方文档】Developing a RESTful API with Go and Gin</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/restfull/</link>
+  <pubDate>Mon, 17 Oct 2022 23:10:00 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/restfull/</guid>
+  <description><![CDATA[引用 本文内容来自：Tutorial: Developing a RESTful API with Go and Gin 环境配置：
+系统：Windows11 编辑器：vscode 🍐 创建项目 创建项目文件夹web-service-gin并用vscode打开该项目 初始化go mod go mod init example/web-service-gin 创建文件main.go package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) type album struct { ID string `json:&#34;id&#34;` Title string `json:&#34;title&#34;` Artist string `json:&#34;artist&#34;` Price float64 `json:&#34;price&#34;` } var albums = []album{ {ID: &#34;1&#34;, Title: &#34;Blue Train&#34;, Artist: &#34;John Coltrane&#34;, Price: 56.99}, {ID: &#34;2&#34;, Title: &#34;Jeru&#34;, Artist: &#34;Gerry Mulligan&#34;, Price: 17.]]></description>
+</item>
+<item>
+  <title>【Go官方文档】Create a Go module</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/gomodule/</link>
+  <pubDate>Mon, 17 Oct 2022 14:56:01 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/gomodule/</guid>
+  <description><![CDATA[引用 本文内容来自：Tutorial: Create a Go module 环境配置：
+系统：Windows11 编辑器：vscode 🍒 1. 创建项目 创建项目文件夹greetings并用vscode打开该项目 在根目录greetings下创建文件夹mymodule并创建greeting.go文件 package greeting import &#34;fmt&#34; // Hello returns a greeting for the named person. func Hello(name string) string { // Return a greeting that embeds the name in a message. message := fmt.Sprintf(&#34;Hi, %v. Welcome!&#34;, name) return message } 在根目录greetings下创建hello.go文件 package main import ( &#34;fmt&#34; &#34;learninggo/mymodule&#34; ) func main() { message := greeting.Hello(&#34;小明&#34;) fmt.Println(message) } 运行代码 在根目录打开命令提示行： go run .]]></description>
+</item>
+<item>
+  <title>【Go官方文档】Get started with Go</title>
+  <link>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/getting-started/</link>
+  <pubDate>Mon, 17 Oct 2022 13:40:31 &#43;0800</pubDate>
+  <author>作者</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/go%E8%AF%AD%E8%A8%80/go%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/getting-started/</guid>
+  <description><![CDATA[ 引用 本文内容来自：Tutorial: Get started with Go 环境配置：
+系统：Windows11 编辑器：vscode 🍇 1. 创建项目 新建文件夹learninggo并用vscode打开 在根目录learninggo下执行命令： go mod init learninggo 自动创建go.mod文件：
+module learninggo go 1.19 🍉 2. 编写代码 创建hello.go文件： package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello wrold!&#34;) } 运行 hello.go： go run . 控制台输出： Hello wrold! ]]></description>
+</item>
+</channel>
+</rss>
