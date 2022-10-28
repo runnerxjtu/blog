@@ -4,11 +4,27 @@
     <link>http://runnerxjtu.github.com/blog/posts/</link>
     <description>所有文章 | </description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Oct 2022 16:45:27 &#43;0800</lastBuildDate><atom:link href="http://runnerxjtu.github.com/blog/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>我的第2篇文章</title>
+  <link>http://runnerxjtu.github.com/blog/posts/text2/</link>
+  <pubDate>Thu, 27 Oct 2022 16:45:27 &#43;0800</pubDate>
+  <author>霁飏</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/text2/</guid>
+  <description><![CDATA[嘻嘻]]></description>
+</item>
+<item>
   <title>我的第一篇文章</title>
   <link>http://runnerxjtu.github.com/blog/posts/text/</link>
   <pubDate>Thu, 27 Oct 2022 16:45:27 &#43;0800</pubDate>
   <author>霁飏</author>
   <guid>http://runnerxjtu.github.com/blog/posts/text/</guid>
+  <description><![CDATA[111111111111]]></description>
+</item>
+<item>
+  <title>我的第一篇文章</title>
+  <link>http://runnerxjtu.github.com/blog/posts/text1/</link>
+  <pubDate>Thu, 27 Oct 2022 16:45:27 &#43;0800</pubDate>
+  <author>霁飏</author>
+  <guid>http://runnerxjtu.github.com/blog/posts/text1/</guid>
   <description><![CDATA[111111111111]]></description>
 </item>
 </channel>
